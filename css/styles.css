@@ -1,0 +1,110 @@
+body {
+  font-family: Poppins, sans-serif;
+  background-color: #FFFFFF;
+  color: #555555;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  height: 42px;
+  width: 42px;
+  margin-right: 12px;
+}
+
+h1 {
+  color: #2A9DCC;
+  font-size: 24px;
+  margin: 0;
+}
+
+.nav {
+  font-size: 14px;
+}
+
+.nav a {
+  color: #555555;
+  text-decoration: none;
+  margin-left: 22px;
+}
+
+.nav a:hover {
+  color: #2A9DCC;
+}
+
+.current {
+  color: #2A9DCC;
+  margin-left: 22px;
+  text-decoration: underline;
+}
+
+.profile {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.page {
+  padding: 70px 50px 40px 50px;
+}
+
+h2 {
+  color: #2A9DCC;
+  text-align: center;
+  font-size: 36px;
+  margin: 0 0 22px 0;
+}
+
+.search-wrap {
+  text-align: center;
+  margin: 0 0 80px 0;
+}
+
+.search {
+  width: 360px;
+  height: 38px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  color: #555555;
+}
+
+.columns {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.columns td {
+  width: 33%;
+  padding: 10px 24px;
+  vertical-align: top;
+}
+
+h3 {
+  color: #2A9DCC;
+  font-size: 18px;
+  margin: 0 0 14px 0;
+}
+
+.columns p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
