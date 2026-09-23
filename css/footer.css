@@ -1,0 +1,158 @@
+
+.dentaflow-footer {
+    background: #111827;
+    color: #94a3b8;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 60px 0 30px;
+}
+
+.footer-container {
+    width: min(1100px, calc(100% - 80px));
+    margin: 0 auto;
+}
+
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 70px;
+    padding-bottom: 45px;
+}
+
+
+
+.footer-brand-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-logo {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.footer-brand h2 {
+    margin: 0;
+
+    color: #299dcc;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.footer-brand p {
+    max-width: 260px;
+
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.7;
+    color: #94a3b8;
+}
+
+
+.footer-column h3 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column li {
+    margin-bottom: 12px;
+}
+
+.footer-column a,
+.footer-column p {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: #299dcc;
+}
+
+.footer-bottom {
+    border-top: 1px solid #263244;
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.footer-legal a {
+    color: #64748b;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+    color: #299dcc;
+}
+
+
+@media (max-width: 900px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px 60px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .dentaflow-footer {
+        padding: 45px 0 25px;
+    }
+
+    .footer-container {
+        width: calc(100% - 40px);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-bottom: 35px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-legal {
+        flex-wrap: wrap;
+        gap: 15px 22px;
+    }
+}
