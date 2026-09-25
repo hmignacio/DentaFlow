@@ -1,61 +1,109 @@
 <!doctype html>
 <html>
   <head>
-    <titde>DentaFlow</titde>
+    <titde>DentaFlow</title>
+    <link rel="stylesheet" href="../css/admin-dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
   </head>
 
   <body>
     <div class="side-nav">
       <ul>
-        <li>Dra. Hanna Ignacio</li>
-        <li><a href="dashboard.html" target="_blank">Dashboard</a></li>
-        <li><a href="services.html" target="_blank">Services</a></li>
-        <li><a href="help-center-page.html" target="_blank">Need Help?</a></li>
-        <li><button href="../index.html">Sign Out</button></li>
+        <li class="user-profile">
+          <i class="fa-solid fa-circle-user"></i>
+
+          <div class="user-info">
+            <span>Dra. Hanna Ignacio</span>
+            <small>Admin</small>
+          </div>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+          </a>
+        </li>
+
+        <li>
+          <a href="services.html">
+            <i class="fa-solid fa-tooth"></i>
+            Services
+          </a>
+        </li>
+
+        <li class="help-link">
+          <a href="help-center-page.html">
+            <i class="fa-solid fa-circle-question"></i>
+            Need Help?
+          </a>
+        </li>
+
+        <li class="sign-out">
+          <a href="../index.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sign Out
+          </a>
+        </li>
       </ul>
     </div>
     <div class="main-container">
       <div class="welcome-pane">
+        <img src="../public/dentaflow_logo.png" alt="DentaFlow Logo" />
         <h2>Hello Username!</h2>
         <button id="add-appointment">+ Add Apoointment</button>
       </div>
 
       <div class="appointment-pagination">
         <table>
-            <tr>
-                <th>Reference No.</th>
-                <th>Patient Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Service</th>
-                <th>Dentist</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>123456678</td>
-                <td>Juan Dela Cruz</td>
-                <td>09/10/2026</td>
-                <td>11:00 A.M.</td>
-                <td>Tooth Extraction</td>
-                <td>Dra.Hanna Ignacio</td>
-                <td>Booked</td>
-                <td><a>Edit</a> <a>Delete</a></td>
-            </tr>
-            <tr>
-                <td>123456679</td>
-                <td>Jane Doe</td>
-                <td>09/11/2026</td>
-                <td>11:00 A.M.</td>
-                <td>Root Canal</td>
-                <td>Dr.Tovy Allistair</td>
-                <td>Booked</td>
-                <td><a>Edit</a> <a>Delete</a></td>
-            </tr>
+          <tr>
+            <th>Reference No.</th>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Service</th>
+            <th>Dentist</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>123456678</td>
+            <td>Juan Dela Cruz</td>
+            <td>09/10/2026</td>
+            <td>11:00 A.M.</td>
+            <td>Tooth Extraction</td>
+            <td>Dra.Hanna Ignacio</td>
+            <td>Booked</td>
+            <td><a>Edit</a> <a>Delete</a></td>
+          </tr>
+          <tr>
+            <td>123456679</td>
+            <td>Jane Doe</td>
+            <td>09/11/2026</td>
+            <td>11:00 A.M.</td>
+            <td>Root Canal</td>
+            <td>Dr.Tovy Allistair</td>
+            <td>Booked</td>
+            <td><a>Edit</a> <a>Delete</a></td>
+          </tr>
         </table>
       </div>
 
-      <footer>Copyright DentaFlow</footer>
+      <footer class="dentaflow-footer">
+        <div class="footer-container">
+          <div class="footer-bottom">
+            <p>© 2026 DentaFlow. All rights reserved.</p>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
