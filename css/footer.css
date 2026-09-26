@@ -32,14 +32,12 @@
 .footer-logo {
     width: 38px;
     height: 38px;
-
     object-fit: contain;
     border-radius: 50%;
 }
 
 .footer-brand h2 {
     margin: 0;
-
     color: #299dcc;
     font-size: 20px;
     font-weight: 700;
@@ -47,9 +45,7 @@
 
 .footer-brand p {
     max-width: 260px;
-
     margin: 0;
-
     font-size: 14px;
     line-height: 1.7;
     color: #94a3b8;
