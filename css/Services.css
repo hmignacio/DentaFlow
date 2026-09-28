@@ -87,3 +87,50 @@ main h2 {
 .services img:hover {
   transform: scale(1.05); /* Subtle zoom on hover */
 }
+
+.carousel {
+  position: relative;
+  width: 120px;          /* width of one image */
+  overflow: hidden;      /* hides the rest */
+}
+
+.services {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.services img {
+  flex-shrink: 0;
+  width: 120px;          /* match the container width */
+  height: auto;
+}
+
+.carousel-btn {
+  background-color: #2A9DCC;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Carousel buttons */
+.carousel-btn {
+  background-color: #2A9DCC;   /* Dental Blue */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.carousel-btn:hover {
+  background-color: #1f7aa3;   /* darker blue on hover */
+}
+
+.dentaflow-footer {
+  margin-top: auto;
+}
