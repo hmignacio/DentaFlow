@@ -36,7 +36,7 @@ other supporting content.
 
 ## Github Page
 
-[DentaFlow live on Github Page]((https://hmignacio.github.io/DentaFlow/)
+[DentaFlow live on Github Page](https://hmignacio.github.io/DentaFlow/)
 
 ## Project Documentation
 
