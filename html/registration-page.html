@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>DentaFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/registration-page.css">
+  </head>
+  <body>
+    <header>
+        <div class="header-container">
+            <img
+                src="../public/dentaflow_logo.png"
+                alt="DentaFlow Logo"
+                style="max-width: 250px; height: auto"
+            />
+    <h1>DentaFlow</h1>
+        </div>
+   </header>
+
+    <div class="page">
+      <table class="main-container">
+        <tr>
+          <td class="left-container">
+            <p class="home-link"><a href="../index.html">&#8592; Home Page</a></p>
+            <h2 class="get-started">Get Started</h2>
+            <p>Already have an account?</p>
+            <a class="login-btn" href="login.html">Log in</a>
+          </td>
+
+          <td class="right-container">
+            <p class="help-link"><a href="help-center-page.html">Need help?</a></p>
+            <h2 class="create-title">Create account</h2>
+
+            <form action="#success" method="get">
+              <table class="name-row">
+                <tr>
+                  <td>
+                    First Name<br>
+                    <input type="text" required>
+                  </td>
+                  <td>
+                    Last Name<br>
+                    <input type="text" required>
+                  </td>
+                </tr>
+              </table>
+
+              <span class="form-label">Email Address</span>
+              <input type="email" required>
+
+              <span class="form-label">Password</span>
+              <input type="password" required>
+
+              <span class="form-label">Re-enter Password</span>
+              <input type="password" required>
+
+              <p class="terms">
+                <input type="checkbox" required>
+                By clicking this checkbox, you hereby agree to our
+                <a href="#">Terms and Condition</a>
+              </p>
+
+              <p class="register-wrap">
+                <button type="submit">Register</button>
+              </p>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="success" class="overlay">
+      <div class="success-box">
+        <a class="close-btn" href="#">&times;</a>
+        <h2>&#10003; ACCOUNT CREATED SUCCESSFULLY</h2>
+        <p>
+          Your DentaFlow account has been successfully created.
+          Please sign in again to continue and start booking your dental appointments.
+        </p>
+        <a class="continue-btn" href="login.html">CONTINUE TO LOG-IN</a>
+      </div>
+    </div>
+    <script src="../js/registration-page.js"></script>
+  </body>
+</html>

@@ -1,0 +1,357 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary-blue: #2da4cf;
+  --light-blue: #eaf8fd;
+  --border-color: #d9e5ea;
+  --dark-text: #07152c;
+  --gray-text: #5f6875;
+  --icon-gray: #686868;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--white);
+  color: var(--dark-text);
+  min-height: 100vh;
+}
+
+/* side-nav class*/
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 185px;
+  height: 100vh;
+  background-color: var(--light-blue);
+  border-right: 1px solid var(--border-color);
+  padding: 20px 10px;
+}
+
+.side-nav ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.side-nav li {
+  margin: 8px 10px;
+}
+
+.side-nav li:first-child {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark-text);
+  padding: 20px 10px;
+  margin-bottom: 15px;
+}
+
+/* side-nav class and user-profile */
+
+.side-nav .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 8px;
+  margin-bottom: 20px;
+}
+
+.user-profile > i {
+  font-size: 38px;
+  color: var(--dark-text);
+}
+
+.user-profile div {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.user-profile small {
+  font-size: 10px;
+  color: var(--gray-text);
+}
+
+/* side-nav class and list items */
+
+.side-nav a {
+  display: block;
+  padding: 12px 15px;
+  color: var(--gray-text);
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 10px;
+  transition: 0.2s ease;
+}
+
+.side-nav a:hover {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.side-nav li:nth-child(2) a {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+.side-nav li:nth-last-child(2) {
+  margin-top: calc(100vh - 430px);
+}
+
+/* side-nav class and button */
+
+.side-nav button {
+  width: 100%;
+  padding: 9px 15px;
+  border: 1px solid #909090;
+  border-radius: 9px;
+  background-color: #d9dde1;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--dark-text);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* sign-out button  */
+
+.sign-out button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 12px;
+}
+.sign-out button:hover {
+  background-color: #c9cdd1;
+}
+
+.side-nav button:hover {
+  background-color: #c9cdd1;
+}
+
+/* main-container class */
+
+.main-container {
+  margin-left: 185px;
+  min-height: 100vh;
+  padding: 80px 25px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* welcome-pane class */
+
+.welcome-pane {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.welcome-pane img {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 30px;
+}
+
+.welcome-pane h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--dark-text);
+}
+
+/* main-container -> add-appointment button */
+#add-appointment {
+  margin-left: auto;
+  padding: 10px 20px;
+  background-color: var(--white);
+  border: 2px solid var(--dark-text);
+  border-radius: 25px;
+  color: var(--dark-text);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#add-appointment:hover {
+  background-color: var(--dark-text);
+  color: var(--white);
+}
+
+/* appointment-pagination class */
+
+.appointment-pagination {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--light-blue);
+  border-radius: 15px;
+}
+
+.appointment-pagination table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.appointment-pagination th {
+  padding: 16px 13px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--dark-text);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.appointment-pagination td {
+  padding: 18px 13px;
+  color: var(--gray-text);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.appointment-pagination tr:last-child td {
+  /* status button */
+  border-bottom: none;
+}
+
+.appointment-pagination td:nth-child(6) {
+  /* value of status */
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+.appointment-pagination td:last-child {
+  /* edit and delete buttons */
+  white-space: nowrap;
+}
+
+.appointment-pagination td:last-child a {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--gray-text);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.appointment-pagination td:last-child a:hover {
+  color: var(--primary-blue);
+}
+
+/* footer */
+.dentaflow-footer {
+  background: var(--white);
+  color: #94a3b8;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  width: 100%;
+  padding: 30px 0;
+  margin-top: auto;
+}
+
+.footer-container {
+  width: min(1100px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.footer-bottom {
+  border-top: 1px solid #263244;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.footer-legal a {
+  color: #64748b;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: #299dcc;
+}
+
+/* responsiveness */
+
+@media (max-width: 900px) {
+  .side-nav {
+    width: 150px;
+  }
+
+  .main-container {
+    margin-left: 150px;
+    padding: 70px 20px 25px;
+  }
+
+  .welcome-pane h2 {
+    font-size: 21px;
+  }
+
+  .appointment-pagination table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 600px) {
+  .side-nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .side-nav li:nth-last-child(2) {
+    margin-top: 8px;
+  }
+
+  .main-container {
+    margin-left: 0;
+    padding: 25px 15px;
+  }
+
+  .welcome-pane {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .appointment-pagination table {
+    min-width: 900px;
+  }
+}
