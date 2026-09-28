@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+  --blue: #2A9dcc;
+  --blue-dark: #1689b9;
+  --dark: #111827;
+  --text: #374151;
+  --light-text: #64748b;
+  --border: #e5e7eb;
+  --light-blue: #eef9fd;
+  --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+
+/* Header */
+
+header {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #edf0f2;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+/* DentaFlow Logo */
+
+.header-container img {
+    position: static;
+    width: 65px;
+    height: 65px;
+    max-width: none !important;
+    object-fit: contain;
+    margin-right: 12px;
+}
+
+
+/* DentaFlow Title */
+
+.header-container h1 {
+    position: static;
+    margin: 0;
+    font-size: 29px;
+    line-height: 1;
+    color: #2A9dcc;
+    font-weight: 700;
+}
+
+/* main */
+
+main {
+    width: 1280px;
+    height: 620px;
+    margin: 58px auto 0;
+    display: flex;
+    border: 1px solid #cbdde5;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* left section */
+
+main > selection:first-of-type {
+    width: 43%;
+    height: 100%;
+    position: relative;
+    background-color: #eaf8fd;
+    padding: 25px 35px;
+}
+
+/* return to homepage */
+
+main > selection:first-of-type nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* left container */
+main > selection:first-of-type h1 {
+    position: absolute;
+    top: 235px;
+    left: 85px;
+    margin: 0;
+    color: #1594c5;
+    font-size: 55px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+/* right container */
+main > selection:last-of-type {
+    width: 57%;
+    height: 100%;
+    position: relative;
+    background-color: #ffffff;
+    padding-top: 95px;
+}
+/* Need Help */
+
+main > selection:last-of-type > div:first-child {     
+    position: absolute;
+    top: 25px;
+    right: 28px;
+}
+
+main > selection:last-of-type > div:first-child a {
+    color: #61758d;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* login form */
+
+main > selection:last-of-type > div:nth-child(2) {
+    width: 360px;
+    margin: 0 auto;
+}
+
+main > selection:last-of-type h2 {
+    margin: 0 0 25px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/* Labels */
+
+main > selection:last-of-type label {
+    font-size: 15px;
+}
+
+/* Inputs */
+
+main > selection:last-of-type input {
+    width: 360px;
+    height: 38px;
+    margin-top: 7px;
+    margin-bottom: 17px;
+    padding: 5px 10px;
+    border: 1px solid #d9dfe5;
+    border-radius: 3px;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+main > selection:last-of-type input:focus {
+    outline: 2px solid #4da3ff;
+}
+
+main > selection:last-of-type > div:nth-of-type(3) {
+    width: 360px;
+    margin: -17px auto 0;
+}
+
+main > selection:last-of-type > div:nth-of-type(4) {
+    width: 360px;
+    margin: 0 auto;
+}
+
+main > selection:last-of-type > div:nth-of-type(4) a {
+    color: #61758d;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* login button */
+
+main > selection:last-of-type button {
+    display: block;
+    width: 170px;
+    height: 40px;
+    margin: 35px auto 45px;
+    background-color: #2A9DCC;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+main > selection:last-of-type button:hover {
+    background-color: #238ab4;
+}
+
+/* register */
+
+main > selection:last-of-type > div:last-child {
+    text-align: center;
+}
+
+main > selection:last-of-type > div:last-child p {
+    margin: 0;
+    color: #61758d;
+    font-size: 10px;
+}
+
+main > selection:last-of-type > div:last-child a {
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+}

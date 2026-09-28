@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color */
+:root {
+  --blue: #2A9dcc;
+  --blue-dark: #1689b9;
+  --dark: #111827;
+  --text: #374151;
+  --light-text: #64748b;
+  --border: #e5e7eb;
+  --light-blue: #eef9fd;
+  --white: #ffffff;
+}
+
+/* Header */
+
+body > img {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+body > h1 {
+    position: absolute;
+    top: 20px;
+    left: 115px;
+    font-size: 29px;
+    line-height: 1;
+    color: var(--blue);
+    font-weight: 700;
+    z-index: 10;
+}
+
+/* Navbar */
+
+nav {
+  height: 68px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 55px;
+  border-bottom: 1px solid #edf0f2;
+  background: #fff;
+}
+
+nav h2 {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+nav a {
+  color: #374151;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+
+nav a:nth-child(3) {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Profile Icon */
+
+nav a:last-child {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  margin-left: 2px;
+  border-radius: 50%;
+  border: 2px solid #111;
+  background: #eef9fd;
+  font-size: 0;
+  display: block;
+}
+
+nav a:last-child::before {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background: #000;
+  border-radius: 50%;
+  top: 6px;
+  left: 11px;
+}
+
+nav a:last-child::after {
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 11px;
+  background: #000;
+  border-radius: 12px 12px 5px 5px;
+  left: 7px;
+  bottom: 5px;
+}
+
+/* Body */
+
+body {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* About section layout */
+.about {
+  display: flex;
+  padding: 40px;
+  margin-left: 174px;
+  margin-right: 174px;
+  }
+
+.left-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-blue); /* Light Blue background */
+}
+
+.right-side {
+  flex: 2;
+  padding-left: 30px;
+}
+
+.about h1 {
+  font-weight: 600; /* Semi-bold heading */
+  color: var(--blue);   /* Dental Blue headings */
+}
+
+.about p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-weight: 400; /* Regular weight for body text */
+  text-align: justify; /* Justified text for better readability */
+}
+
+.dentaflow-footer {
+    margin-top: auto;
+}
+
