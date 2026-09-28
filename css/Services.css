@@ -170,6 +170,33 @@ main h2 {
   transform: scale(1.05); /* Subtle zoom on hover */
 }
 
+.carousel {
+  position: relative;
+  width: 120px;          /* width of one image */
+  overflow: hidden;      /* hides the rest */
+}
+
+.services {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.services img {
+  flex-shrink: 0;
+  width: 120px;          /* match the container width */
+  height: auto;
+}
+
+.carousel-btn {
+  background-color: #2A9DCC;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 .dentaflow-footer {
   margin-top: auto;
 }
