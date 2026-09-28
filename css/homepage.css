@@ -108,7 +108,6 @@ nav a:last-child {
   display: block;
 }
 
-/* Head */
 
 nav a:last-child::before {
   content: "";
@@ -120,8 +119,6 @@ nav a:last-child::before {
   top: 6px;
   left: 11px;
 }
-
-/* Body */
 
 nav a:last-child::after {
   content: "";

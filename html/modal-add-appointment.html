@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>DentaFlow</title>
+    <link rel="stylesheet" href="../css/dashboard-modal.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h2>Book an Appointment</h2>
+      <form action="">
+        <p><i>Please confirm that you would like to request the following
+            appointment:
+        </i></p>
+
+        <label for="appointment-date">Appointment Date:</label><br />
+        <input type="date" id="appointment-date" name="appointment-date" />
+
+        <p class="information-title">Patient Information:</p>
+
+        <div class="name-row">
+          <input
+            type="text"
+            id="first-name"
+            name="first-name"
+            placeholder="First Name *"
+          />
+          <input
+            type="text"
+            id="last-name"
+            name="last-name"
+            placeholder="Last Name *"
+          />
+        </div>
+
+        <input type="email" id="email" name="email" placeholder="Email *" />
+        <input type="text" id="birthdate" name="birthdate" placeholder="Date of Birth * eg (mm-dd-yyyy)"/>
+
+        <div class="form-row">
+          <label for="service">Type of Service:</label>
+          <select name="service" id="service">
+            <option value="">Select...</option>
+            <option value="extraction">Tooth Extraction</option>
+            <option value="root">Root Canal</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="restoration">Tooth Restoration</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="dentist">Dentist:</label>
+          <select name="dentist" id="dentist">
+            <option value="">Select...</option>
+            <option value="hanna">Dra. Hanna Ignacio</option>
+            <option value="tovy">Dr. Tovy Tongson</option>
+            <option value="kurt">Dr. Kurt Gozon</option>
+            <option value="xyril">Dra. Xyril Fabellon</option>
+          </select>
+        </div>
+
+        <div class="form-buttons">
+          <input type="submit" value="Book Appoinment" />
+          <input type="button" value="Cancel" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

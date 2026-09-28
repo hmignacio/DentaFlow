@@ -1,61 +1,192 @@
 <!doctype html>
 <html>
   <head>
-    <titde>DentaFlow</titde>
+    <title>DentaFlow</title>
+    <link rel="stylesheet" href="../css/admin-dashboard.css" />
+    <link rel="stylesheet" href="../css/dashboard-modal.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    
   </head>
 
   <body>
     <div class="side-nav">
       <ul>
-        <li>Dra. Hanna Ignacio</li>
-        <li><a href="dashboard.html" target="_blank">Dashboard</a></li>
-        <li><a href="services.html" target="_blank">Services</a></li>
-        <li><a href="help-center-page.html" target="_blank">Need Help?</a></li>
-        <li><button href="../index.html">Sign Out</button></li>
+        <li class="user-profile">
+          <i class="fa-solid fa-circle-user"></i>
+
+          <div class="user-info">
+            <span>Dra. Hanna Ignacio</span>
+            <small>Admin</small>
+          </div>
+        </li>
+
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+          </a>
+        </li>
+
+        <li>
+          <a href="services.html">
+            <i class="fa-solid fa-tooth"></i>
+            Services
+          </a>
+        </li>
+
+        <li class="help-link">
+          <a href="help-center-page.html">
+            <i class="fa-solid fa-circle-question"></i>
+            Need Help?
+          </a>
+        </li>
+
+        <li class="sign-out">
+          <a href="../index.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Sign Out
+          </a>
+        </li>
       </ul>
     </div>
     <div class="main-container">
       <div class="welcome-pane">
+        <img src="../public/dentaflow_logo.png" alt="DentaFlow Logo" />
         <h2>Hello Username!</h2>
-        <button id="add-appointment">+ Add Apoointment</button>
+        <button id="add-appointment">+ Add Appointment</button>
       </div>
 
       <div class="appointment-pagination">
         <table>
-            <tr>
-                <th>Reference No.</th>
-                <th>Patient Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Service</th>
-                <th>Dentist</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>123456678</td>
-                <td>Juan Dela Cruz</td>
-                <td>09/10/2026</td>
-                <td>11:00 A.M.</td>
-                <td>Tooth Extraction</td>
-                <td>Dra.Hanna Ignacio</td>
-                <td>Booked</td>
-                <td><a>Edit</a> <a>Delete</a></td>
-            </tr>
-            <tr>
-                <td>123456679</td>
-                <td>Jane Doe</td>
-                <td>09/11/2026</td>
-                <td>11:00 A.M.</td>
-                <td>Root Canal</td>
-                <td>Dr.Tovy Allistair</td>
-                <td>Booked</td>
-                <td><a>Edit</a> <a>Delete</a></td>
-            </tr>
+          <tr>
+            <th>Reference No.</th>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Service</th>
+            <th>Dentist</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>123456678</td>
+            <td>Juan Dela Cruz</td>
+            <td>09/10/2026</td>
+            <td>11:00 A.M.</td>
+            <td>Tooth Extraction</td>
+            <td>Dra.Hanna Ignacio</td>
+            <td>Booked</td>
+            <td><input id="open-booked-appointment" type="button" value="Cancel" /></td>
+          </tr>
         </table>
       </div>
 
-      <footer>Copyright DentaFlow</footer>
+      <footer class="dentaflow-footer">
+        <div class="footer-container">
+          <div class="footer-bottom">
+            <p>© 2026 DentaFlow. All rights reserved.</p>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
+
+    <div id="appointment-modal" class="appointment-modal">
+
+      <div class="main-container-add-appointment" >
+        <h2>Book an Appointment</h2>
+        <form action="modal-appointment-confirmed.html" method="GET">
+          <p><i>Please confirm that you would like to request the following
+              appointment:
+          </i></p>
+
+          <label for="appointment-date">Appointment Date:</label><br />
+          <input type="date" id="appointment-date" name="appointment-date" />
+
+          <p class="information-title">Patient Information:</p>
+
+          <div class="name-row">
+            <input
+              type="text"
+              id="first-name"
+              name="first-name"
+              placeholder="First Name *"
+            />
+            <input
+              type="text"
+              id="last-name"
+              name="last-name"
+              placeholder="Last Name *"
+            />
+          </div>
+
+          <input type="email" id="email" name="email" placeholder="Email *" />
+          <input type="text" id="birthdate" name="birthdate" placeholder="Date of Birth * eg (mm-dd-yyyy)"/>
+
+          <div class="form-row">
+            <label for="service">Type of Service:</label>
+            <select name="service" id="service">
+              <option value="">Select...</option>
+              <option value="extraction">Tooth Extraction</option>
+              <option value="root">Root Canal</option>
+              <option value="cleaning">Cleaning</option>
+              <option value="restoration">Tooth Restoration</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="dentist">Dentist:</label>
+            <select name="dentist" id="dentist">
+              <option value="">Select...</option>
+              <option value="hanna">Dra. Hanna Ignacio</option>
+              <option value="tovy">Dr. Tovy Tongson</option>
+              <option value="kurt">Dr. Kurt Gozon</option>
+              <option value="xyril">Dra. Xyril Fabellon</option>
+            </select>
+          </div>
+
+          <div class="form-buttons">
+            <input type="submit" value="Book Appoinment" />
+            <input id="close-appointment" type="button" value="Cancel" />
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <div id="cancel-modal-appointment" class="appointment-modal">
+      <div class="main-container-add-appointment">
+        <h2>Cancel Appointment?</h2>
+        <form action="modal-canceled-appointment.html" method="GET">
+          <p>
+            Are you sure you want to cancel your appointment?<br /><br />
+            Once cancelled, your scheduled time slot will become available to
+            other patients.
+          </p>
+          <br /><br />
+
+          <div class="form-buttons">
+            <input id="keep-booked-appointment" type="button" value="Keep Appointment" />
+            <input type="submit" value="Yes, Cancel" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="../js/modal-dashboard.js" defer></script>
   </body>
+
 </html>

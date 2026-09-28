@@ -1,0 +1,266 @@
+:root {
+  --blue: #2A9dcc;
+  --blue-dark: #1689b9;
+  --dark: #111827;
+  --text: #374151;
+  --light-text: #64748b;
+  --border: #e5e7eb;
+  --light-blue: #eef9fd;
+  --white: #ffffff;
+
+}
+body {
+  font-family: Poppins, sans-serif;
+  background-color:var(--white);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* DentaFlow Logo */
+
+.header-container img {
+    position: static;
+    width: 65px;
+    height: 65px;
+    max-width: none !important;
+    object-fit: contain;
+    margin-right: 12px;
+}
+
+/* DentaFlow Title */
+
+.header-container h1 {
+    position: static;
+    margin: 0;
+    font-size: 29px;
+    line-height: 1;
+    color: var(--blue);
+    font-weight: 700;
+}
+
+h1,
+h2 {
+  color: var(--blue);
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  padding: 40px;
+}
+
+.main-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  height: 520px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.left-container,
+.right-container {
+  width: 50%;
+  padding: 28px 36px;
+  vertical-align: top;
+}
+
+.left-container {
+  text-align: center;
+  background-color: var(--white);
+}
+
+.right-container {
+  background-color: var(--light-blue);
+}
+
+.home-link {
+  text-align: left;
+  margin: 0 0 90px 0;
+  font-size: 14px;
+}
+
+.home-link a,
+.help-link a {
+  color: var(--text);
+}
+
+.get-started {
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0 0 18px 0;
+}
+
+.left-container p {
+  font-size: 14px;
+  margin: 0 0 18px 0;
+}
+
+.login-btn,
+.continue-btn,
+button {
+  background-color: var(--blue);
+  color: var(--white);
+  font-family: Poppins, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login-btn,
+button {
+  display: inline-block;
+  padding: 10px 42px;
+  border: none;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.login-btn:hover,
+.continue-btn:hover,
+button:hover {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.close-btn:hover {
+  text-decoration: none;
+}
+
+.help-link {
+  text-align: right;
+  margin: 0 0 20px 0;
+  font-size: 13px;
+}
+
+.create-title {
+  text-align: center;
+  font-size: 22px;
+  margin: 0 0 24px 0;
+}
+
+.name-row {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.name-row td {
+  width: 50%;
+  padding: 0 8px 0 0;
+  font-size: 13px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  height: 36px;
+  padding: 6px 10px;
+  margin: 6px 0 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: Poppins, sans-serif;
+  background-color: var(--white);
+  box-sizing: border-box;
+}
+
+.terms {
+  font-size: 12px;
+  margin: 10px 0 24px 0;
+}
+
+.terms a {
+  text-decoration: underline;
+}
+
+input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.register-wrap {
+  text-align: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(232, 246, 250, 0.75);
+  z-index: 10;
+}
+
+.overlay:target {
+  display: block;
+}
+
+.success-box {
+  width: 520px;
+  margin: 160px auto 0 auto;
+  background-color: var(--white);
+  color: var(--text)  ;
+  padding: 40px 42px 42px 42px;
+  border-radius: 18px;
+  position: relative;
+}
+
+.success-box h2 {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+}
+
+.success-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 28px 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 24px;
+}
+
+.continue-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
