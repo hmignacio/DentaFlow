@@ -10,250 +10,403 @@
   --white: #ffffff;
 }
 
-* {
-    box-sizing: border-box;
-}
+.appointment-modal-static {
+  position: fixed;
+  inset: 0;
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(15, 23, 42, 0.45);
-    font-family: "Poppins", sans-serif;
-}
+  z-index: 9999;
 
-/* main-container class */
+  display: flex;
 
-.main-container {
-    width: 510px;
-    max-width: 90%;
-    background-color: var(--white);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
-}
+  align-items: center;
+  justify-content: center;
 
-.main-container h2 {
-    margin: 0;
-    padding: 18px 24px;
-    background-color: var(--primary-blue);
-    color: var(--white);
-    font-size: 15px;
-    font-weight: 600;
-}
+  padding: 20px;
 
-.main-container form {
-    padding: 22px 24px;
-}
-
-.main-container form > p:first-child {
-    margin-top: 0;
-    margin-bottom: 18px;
-    font-size: 12px;
-    color: var(--dark-text);
-}
-
-/* labels inside main-container */
-
-.main-container label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--dark-text);
-}
-
-/* inputs inside main-container */
-
-.main-container input[type="text"],
-.main-container input[type="email"],
-.main-container input[type="date"],
-.main-container select {
-
-    width: 100%;
-    height: 43px;
-    padding: 0 15px;
-    background-color: var(--light-blue);
-    border: 1px solid var(--border-color);
-    border-radius: 7px;
-    font-family: "Poppins", sans-serif;
-    font-size: 12px;
-    color: var(--dark-text);
-    outline: none;
-}
-
-/* notifying user on where text field they've been typing in */
-
-.main-container input:focus,
-.main-container select:focus {
-    border-color: var(--primary-blue);  
+  background-color: rgba(15, 23, 42, 0.45);
 }
 
 
-/* placeholder in text fields */
+.appointment-modal {
+  position: fixed;
+  inset: 0;
 
-.main-container input::placeholder {
-    color: var(--gray-text);
+  z-index: 9999;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background-color: rgba(15, 23, 42, 0.45);
 }
 
 
-/* input fields*/
-
-#appointment-date {                         /* appointmennt date picker */
-    margin-top: 7px;
-    margin-bottom: 17px;
-    border-color: var(--primary-blue);
+/* Modal becomes visible */
+.appointment-modal.show {
+  display: flex;
 }
+
+.cancel-modal-appoinment {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background-color: rgba(15, 23, 42, 0.45);
+}
+
+
+/* Modal becomes visible */
+.cancel-modal-appoinment {
+  display: flex;
+}
+
+
+
+.main-container-add-appointment {
+  position: relative;
+
+  width: 510px;
+  max-width: 90%;
+
+  max-height: 90vh;
+
+  background-color: var(--white);
+
+  border-radius: 15px;
+
+  overflow-y: auto;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+
+  font-family: "Poppins", sans-serif;
+}
+
+
+.main-container-add-appointment h2 {
+  margin: 0;
+
+  padding: 18px 24px;
+
+  background-color: var(--primary-blue);
+
+  color: var(--white);
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+
+.main-container-add-appointment form {
+  padding: 22px 24px;
+}
+
+
+/* Confirmation message */
+
+.main-container-add-appointment form > p:first-child {
+  margin-top: 0;
+  margin-bottom: 18px;
+
+  font-size: 12px;
+
+  color: var(--dark-text);
+}
+
+
+
+.main-container-add-appointment label {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: var(--dark-text);
+}
+
+
+.main-container-add-appointment input[type="text"],
+.main-container-add-appointment input[type="email"],
+.main-container-add-appointment input[type="date"],
+.main-container-add-appointment select {
+
+  width: 100%;
+
+  height: 43px;
+
+  padding: 0 15px;
+
+  background-color: var(--light-blue);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 7px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 12px;
+
+  color: var(--dark-text);
+
+  outline: none;
+}
+
+
+/* Focus */
+
+.main-container-add-appointment input:focus,
+.main-container-add-appointment select:focus {
+  border-color: var(--primary-blue);
+}
+
+
+/* Placeholder */
+
+.main-container-add-appointment input::placeholder {
+  color: var(--gray-text);
+}
+
+
+#appointment-date {
+  margin-top: 7px;
+
+  margin-bottom: 17px;
+
+  border-color: var(--primary-blue);
+}
+
+
 
 .information-title {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--dark-text);
+  margin-top: 0;
+
+  margin-bottom: 12px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: var(--dark-text);
 }
+
 
 .information-title span {
-    color: var(--primary-blue);
+  color: var(--primary-blue);
 }
 
-.name-row {                                /* patient name input fields */ 
-    display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
+
+
+.name-row {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 12px;
 }
+
 
 .name-row input {
-    width: 50%;
+  width: 50%;
 }
 
-#birthdate {                               /* date of birth input fields */ 
-    margin-bottom: 12px;
+#birthdate {
+  margin-bottom: 12px;
 }
 
-#email {                                   /* email input field */ 
-    margin-bottom: 16px;
+
+#email {
+  margin-bottom: 16px;
 }
 
-.main-container input::placeholder {
-    color: var(--gray-text);
-}
-
-/* form-row for dentist and type of service fields */
 
 .form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 16px;
 }
+
 
 .form-row label {
-    width: 160px;
+  width: 160px;
 }
+
 
 .form-row select {
-    flex: 1;
+  flex: 1;
 }
 
 
-/* form buttons for 2 buttons */
 
 .form-buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 20px;
 }
 
 
 .form-buttons input {
-    flex: 1;
-    height: 43px;
-    border-radius: 7px;
-    font-family: "Poppins", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
+  flex: 1;
+
+  height: 43px;
+
+  border-radius: 7px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
 }
 
+
+/* Book Appointment */
 
 .form-buttons input[type="submit"] {
-    background-color: var(--primary-blue);
-    border: 1px solid var(--primary-blue);
-    color: var(--white);
+  background-color: var(--primary-blue);
+
+  border: 1px solid var(--primary-blue);
+
+  color: var(--white);
 }
+
 
 .form-buttons input[type="submit"]:hover {
+  background-color: var(--light-blue);
 
-    background-color : var(--light-blue);
-    color: var(--light-gray);
-
+  color: var(--primary-blue);
 }
+
+
+/* Cancel */
 
 .form-buttons input[type="button"] {
-    background-color: var(--white);
-    border: 1px solid var(--primary-blue);
-    color: var(--dark-text);
+  background-color: var(--white);
+
+  border: 1px solid var(--primary-blue);
+
+  color: var(--dark-text);
 }
+
 
 .form-buttons input[type="button"]:hover {
+  background-color: var(--light-blue);
 
-    background-color: var(--light-gray);
-    border: 1px solid var(--primary-blue);
-    color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+
+  color: var(--primary-blue);
 }
 
-/* form button for 1 button */
+
 
 .form-button-row-1 {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 20px;
 }
+
 
 .form-button-row-1 input {
-    flex: .30;
-    height: 43px;
-    border-radius: 7px;
-    font-family: "Poppins", sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
+  flex: 0.30;
+
+  height: 43px;
+
+  border-radius: 7px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
 }
 
-.form-button-row-1  input[type="button"] {
-    background-color: var(--primary-blue);
-    border: 1px solid var(--primary-blue);
-    color: var(--white);
+
+.form-button-row-1 input[type="button"] {
+  background-color: var(--primary-blue);
+
+  border: 1px solid var(--primary-blue);
+
+  color: var(--white);
 }
 
-.form-button-row-1  input[type="button"]:hover {
-    background-color: var(--light-blue);
-    color: var(--light-gray);
+
+.form-button-row-1 input[type="button"]:hover {
+  background-color: var(--light-blue);
+
+  color: var(--primary-blue);
 }
 
-/* responsiveness */
+
 
 @media (max-width: 550px) {
 
-    .name-row {
-        flex-direction: column;
-    }
+  .appointment-modal {
+    padding: 10px;
+  }
 
-    .name-row input {
-        width: 100%;
-    }
 
-    .form-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 7px;
-    }
+  .main-container-add-appointment {
+    max-width: 100%;
 
-    .form-row label {
-        width: 100%;
-    }
+    max-height: 95vh;
+  }
 
-    .form-buttons {
-        flex-direction: column;
-    }
+
+  .main-container-add-appointment form {
+    padding: 20px;
+  }
+
+
+  .name-row {
+    flex-direction: column;
+  }
+
+
+  .name-row input {
+    width: 100%;
+  }
+
+
+  .form-row {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 7px;
+  }
+
+
+  .form-row label {
+    width: 100%;
+  }
+
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+
+  .form-buttons input {
+    width: 100%;
+  }
+
 }
