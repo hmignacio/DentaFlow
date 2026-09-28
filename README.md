@@ -43,14 +43,14 @@ other supporting content.
 The following materials provide additional information about the
 planning, design, development, and testing of DentaFlow:
 
-1.  [Workflow] (https://docs.google.com/presentation/d/1ZlHsKPARCGkxJlhQx141fvPQnNqO7aD0dQbcfDJcdI8/edit?usp=drive_link)
-2.  [Brainstorming Sheet] (https://docs.google.com/document/d/1ZLrymb7TGrvBik5CAFXrqiYawFpd9gYOxjbUchPfPE8/edit?usp=drive_link)
+1.  [Workflow](https://docs.google.com/presentation/d/1ZlHsKPARCGkxJlhQx141fvPQnNqO7aD0dQbcfDJcdI8/edit?usp=drive_link)
+2.  [Brainstorming Sheet](https://docs.google.com/document/d/1ZLrymb7TGrvBik5CAFXrqiYawFpd9gYOxjbUchPfPE8/edit?usp=drive_link)
 3.  Wireframes:
-    -   [Wireframes (PNG)] (https://drive.google.com/drive/folders/1vuqtpoB2Eqb1jXO3bV_yszAMA76CVTvb?usp=drive_link)
-    -   [Wireframes (Figma)] (https://www.figma.com/design/A5nhCPPvbm3r1aFCAeVGxF/Websystem?node-id=13-63&t=Br1GQmAshlkURXlx-1)
-4.  [Manual Testing] (https://docs.google.com/spreadsheets/d/19qkw-eBdFP2SmRkauLIIMWNErW4TqHH3YpwGmtI0ZwU/edit?usp=sharing)
-5.  [AI Use Statement] (https://docs.google.com/document/d/1KvUr-C5jZYMKvW5vPVOcPH-bXyM8Pd-IVHGPEZASRtE/edit?usp=sharing)
-6.  [Application Development Workflow Worksheet] (https://docs.google.com/spreadsheets/d/1OBJYoLtzAZjPOsfg9GOeEIU5mEEhV1UXyGEBaGGGSYQ/edit?usp=sharing)
+    -   [Wireframes (PNG)](https://drive.google.com/drive/folders/1vuqtpoB2Eqb1jXO3bV_yszAMA76CVTvb?usp=drive_link)
+    -   [Wireframes (Figma)](https://www.figma.com/design/A5nhCPPvbm3r1aFCAeVGxF/Websystem?node-id=13-63&t=Br1GQmAshlkURXlx-1)
+4.  [Manual Testing](https://docs.google.com/spreadsheets/d/19qkw-eBdFP2SmRkauLIIMWNErW4TqHH3YpwGmtI0ZwU/edit?usp=sharing)
+5.  [AI Use Statement](https://docs.google.com/document/d/1KvUr-C5jZYMKvW5vPVOcPH-bXyM8Pd-IVHGPEZASRtE/edit?usp=sharing)
+6.  [Application Development Workflow Worksheet](https://docs.google.com/spreadsheets/d/1OBJYoLtzAZjPOsfg9GOeEIU5mEEhV1UXyGEBaGGGSYQ/edit?usp=sharing)
 
 ## Current Development Scope
 
