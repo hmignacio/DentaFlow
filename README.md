@@ -62,3 +62,5 @@ different browser viewport sizes.
 The project is still under development, so existing pages, interactions,
 responsive design, and other features may continue to be refined or
 expanded as development progresses.
+
+Note => For Login, since the web application is in its early stages, you can put any values inside the text fields or none at all, to go to the admin dashboard, just simply click the Login button.
