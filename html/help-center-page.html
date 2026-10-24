@@ -24,12 +24,13 @@
       <h2 class="page-title">Need some help?</h2>
 
       <p align="center">
-        <input type="text" placeholder="Type to search" size="40" />
+        <input id="help-search" type="text" placeholder="Type to search" size="40" />
       </p>
+      <p id="no-results" class="no-results">No results found.</p>
       <br /><br />
       <table class="page-table" width="100%" cellpadding="20">
         <tr>
-          <td width="33%" valign="top">
+          <td class="help-card" width="33%" valign="top">
             <h3>Frequently asked questions</h3>
             <p>
               Find quick answers to common questions about using DentaFlow.
@@ -37,7 +38,7 @@
               choose a dental service, and update your profile information.
             </p>
           </td>
-          <td width="33%" valign="top">
+          <td class="help-card" width="33%" valign="top">
             <h3>Guides and Resources</h3>
             <p>
               Explore simple guides to help you use DentaFlow. Get step-by-step
@@ -46,7 +47,7 @@
               services available.
             </p>
           </td>
-          <td width="33%" valign="top">
+          <td class="help-card" width="33%" valign="top">
             <h3>Support</h3>
             <p>
               Need additional help? Contact the DentaFlow support team for
@@ -120,5 +121,6 @@
             <a href="#">Terms of Service</a>
             <a href="#">Cookie Policy</a>
     </footer>
+    <script src="../js/help-center-page.js"></script>
   </body>
 </html>
