@@ -150,20 +150,28 @@ main h2 {
 
 /* Services grid */
 .services {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  display: flex;
   gap: 20px;
-  background-color: var(--white);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
 
+  justify-content: center; 
+  align-items: center;     
+
+  background: white;
+  padding: 20px;
+
+  border-radius: 10px;
+
+  transition: transform 0.6s ease;
+}
 .services img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  transition: transform 0.2s ease;
+  width: 200px;
+  height: 200px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+
+  flex-shrink: 0;
 }
 
 .services img:hover {
@@ -171,20 +179,18 @@ main h2 {
 }
 
 .carousel {
-  position: relative;
-  width: 120px;          /* width of one image */
-  overflow: hidden;      /* hides the rest */
-}
+  width: 500px;
+  height: 280px;
 
-.services {
-  display: flex;
-  transition: transform 0.5s ease;
-}
+  overflow: hidden;
 
-.services img {
-  flex-shrink: 0;
-  width: 120px;          /* match the container width */
-  height: auto;
+  background: white;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+  border-radius: 10px;
 }
 
 .carousel-btn {
