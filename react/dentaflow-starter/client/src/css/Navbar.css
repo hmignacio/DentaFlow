@@ -1,0 +1,151 @@
+
+/* Navbar */
+
+.dentaflow-navbar {
+  height: 68px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #edf0f2;
+  background: #fff;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* Brand */
+
+.dentaflow-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 55px;
+  color: #299dcc;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.dentaflow-navbar .navbar-logo {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+/* Navigation */
+
+.dentaflow-navbar .navbar-navigation {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 55px;
+  background: transparent;
+  border: none;
+  width: auto;
+}
+
+.dentaflow-navbar .navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.dentaflow-navbar .navbar-links > a:not(.navbar-profile) {
+  color: #374151;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.dentaflow-navbar .navbar-links > a:not(.navbar-profile):hover {
+  color: #299dcc;
+}
+
+/* Active Link */
+
+.dentaflow-navbar .navbar-links > a.active:not(.navbar-profile) {
+  color: #299dcc;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Profile Icon */
+
+.dentaflow-navbar .navbar-profile {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  margin-left: 2px;
+  border-radius: 50%;
+  border: 2px solid #111;
+  background: #eef9fd;
+  font-size: 0;
+  display: block;
+  flex-shrink: 0;
+}
+
+.dentaflow-navbar .navbar-profile::before {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background: #000;
+  border-radius: 50%;
+  top: 6px;
+  left: 11px;
+}
+
+.dentaflow-navbar .navbar-profile::after {
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 11px;
+  background: #000;
+  border-radius: 12px 12px 5px 5px;
+  left: 7px;
+  bottom: 5px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .dentaflow-navbar .navbar-brand {
+    margin-left: 20px;
+    font-size: 18px;
+  }
+
+  .dentaflow-navbar .navbar-navigation {
+    padding-right: 20px;
+  }
+
+  .dentaflow-navbar .navbar-links {
+    gap: 15px;
+  }
+
+  .dentaflow-navbar .navbar-links > a:not(.navbar-profile) {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dentaflow-navbar {
+    height: auto;
+    min-height: 68px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  .dentaflow-navbar .navbar-navigation {
+    width: 100%;
+    padding: 12px 20px 0;
+    justify-content: center;
+  }
+
+  .dentaflow-navbar .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
