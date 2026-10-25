@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import Placeholder from "./pages/Placeholder.jsx";
 import AdminDashboard from "./pages/AdminDashboard";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
+import Services from "./pages/Services.jsx";
 
 // Layout for public pages
 function PublicLayout() {
@@ -31,15 +32,10 @@ export default function App() {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
 
-        <Route
-          path="/services"
-          element={
-            <Placeholder
-              title="Our Services"
-              description="Explore our dental care services. Replace this placeholder with your existing Services page."
-            />
-          }
-        />
+       <Route
+        path="/services"
+        element={<Services />}
+      />
 
         <Route
           path="/about"

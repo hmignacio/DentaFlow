@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* Color */
 :root {
   --blue: #2A9dcc;
@@ -119,29 +112,17 @@ nav a:last-child::after {
   bottom: 5px;
 }
 
-/* Body */
-
-body {
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
-  background: var(--white);
-  color: var(--dark);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow-x: hidden;
-}
-
 /* Section styling */
-main {
+.services-page {
   padding: 40px;
   background-color: #E8F6FA; 
   margin-top: 68px; 
   margin-left: 41px;
   margin-right: 41px;
+   margin-bottom: 41px;
 }
 
-main h2 {
+.services-page  h2 {
   color: #2A9DCC; 
   font-weight: 600;
   font-size: 47px;
