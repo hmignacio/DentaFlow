@@ -1,0 +1,11 @@
+import express from 'express';
+import cors from 'cors';
+import 'dotenv/config';
+const app=express();
+app.use(cors());
+app.use(express.json());
+app.get('/api/health',(_req,res)=>res.json({status:'ok',message:'DentaFlow Express API is running'}));
+app.get('/api/services',(_req,res)=>res.json({services:[]}));
+app.use('/api',(req,res)=>res.status(404).json({error:'API route not found'}));
+const port=process.env.PORT||5000;
+app.listen(port,()=>console.log(`DentaFlow API running on http://localhost:${port}`));
