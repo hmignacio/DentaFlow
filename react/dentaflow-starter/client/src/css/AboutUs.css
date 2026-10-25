@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color */
+:root {
+  --blue: #2A9dcc;
+  --blue-dark: #1689b9;
+  --dark: #111827;
+  --text: #374151;
+  --light-text: #64748b;
+  --border: #e5e7eb;
+  --light-blue: #eef9fd;
+  --white: #ffffff;
+}
+
+
+/* About section layout */
+.about {
+  display: flex;
+  padding: 40px;
+  margin-left: 174px;
+  margin-right: 174px;
+  }
+
+.left-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-blue); /* Light Blue background */
+}
+
+.right-side {
+  flex: 2;
+  padding-left: 30px;
+}
+
+.about h1 {
+  font-weight: 600; /* Semi-bold heading */
+  color: var(--blue);   /* Dental Blue headings */
+}
+
+.about p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-weight: 400; /* Regular weight for body text */
+  text-align: justify; /* Justified text for better readability */
+}
+
+.dentaflow-footer {
+    margin-top: auto;
+}
+

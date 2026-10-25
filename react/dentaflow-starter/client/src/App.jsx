@@ -4,9 +4,13 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import Registration from "./pages/Registration.jsx";
+import HelpCenter from "./pages/HelpCenter.jsx";
 import Placeholder from "./pages/Placeholder.jsx";
 import AdminDashboard from "./pages/AdminDashboard";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
+import Services from "./pages/Services.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
+import Login from "./pages/Login.jsx";
 
 // Layout for public pages
 function PublicLayout() {
@@ -30,63 +34,16 @@ export default function App() {
       {/* PUBLIC PAGES */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
-
-        <Route
-          path="/services"
-          element={
-            <Placeholder
-              title="Our Services"
-              description="Explore our dental care services. Replace this placeholder with your existing Services page."
-            />
-          }
-        />
-
-        <Route
-          path="/about"
-          element={
-            <Placeholder
-              title="About Us"
-              description="Learn more about DentaFlow. Replace this placeholder with your existing About Us page."
-            />
-          }
-        />
-
-        <Route
-          path="/help"
-          element={
-            <Placeholder
-              title="Help Center"
-              description="How can we help? Replace this placeholder with your existing Help Center page."
-            />
-          }
-        />
-
-        <Route
-          path="/login"
-          element={
-            <Placeholder
-              title="Log In"
-              description="Connect your login form and authentication API here."
-            />
-          }
-        />
-
-        <Route
-          path="/register"
-          element={<Registration />}
-        />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/help" element={<HelpCenter />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
       </Route>
 
       {/* ADMIN PAGES */}
-      <Route
-        path="/admin"
-        element={<AdminDashboard />}
-      />
-
-      <Route
-        path="/patient"
-        element={<PatientDashboard />}
-      />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/patient" element={<PatientDashboard />} />
 
       {/* PAGE NOT FOUND */}
       <Route
