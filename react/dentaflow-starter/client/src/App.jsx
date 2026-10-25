@@ -3,11 +3,10 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
-import HelpCenter from "./pages/HelpCenter.jsx";
+import Registration from "./pages/Registration.jsx";
 import Placeholder from "./pages/Placeholder.jsx";
 import AdminDashboard from "./pages/AdminDashboard";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
-import Services from "./pages/Services.jsx";
 
 // Layout for public pages
 function PublicLayout() {
@@ -32,10 +31,15 @@ export default function App() {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
 
-       <Route
-        path="/services"
-        element={<Services />}
-      />
+        <Route
+          path="/services"
+          element={
+            <Placeholder
+              title="Our Services"
+              description="Explore our dental care services. Replace this placeholder with your existing Services page."
+            />
+          }
+        />
 
         <Route
           path="/about"
@@ -49,7 +53,12 @@ export default function App() {
 
         <Route
           path="/help"
-          element={<HelpCenter />}
+          element={
+            <Placeholder
+              title="Help Center"
+              description="How can we help? Replace this placeholder with your existing Help Center page."
+            />
+          }
         />
 
         <Route
@@ -60,6 +69,11 @@ export default function App() {
               description="Connect your login form and authentication API here."
             />
           }
+        />
+
+        <Route
+          path="/register"
+          element={<Registration />}
         />
       </Route>
 
