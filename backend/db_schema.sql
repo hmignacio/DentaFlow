@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS `dentaflow`
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_0900_ai_ci;
+USE `dentaflow`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `full_name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password_hash` VARCHAR(255) NOT NULL,
+  `user_role` ENUM('patient', 'admin') NOT NULL DEFAULT 'patient',
+  `is_active` TINYINT(1) NOT NULL DEFAULT 1,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB
+  AUTO_INCREMENT=3
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `session_id` VARCHAR(128) NOT NULL,
+  `expires` INT UNSIGNED NOT NULL,
+  `data` MEDIUMTEXT,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  
+  
+  COLLATE=utf8mb4_0900_ai_ci;
