@@ -1,9 +1,9 @@
-
 import { Routes, Route, Outlet } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
+import HelpCenter from "./pages/HelpCenter.jsx";
 import Placeholder from "./pages/Placeholder.jsx";
 import AdminDashboard from "./pages/AdminDashboard";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
@@ -49,12 +49,7 @@ export default function App() {
 
         <Route
           path="/help"
-          element={
-            <Placeholder
-              title="Help Center"
-              description="How can we help? Replace this placeholder with your existing Help Center page."
-            />
-          }
+          element={<HelpCenter />}
         />
 
         <Route
