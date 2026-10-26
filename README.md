@@ -1,16 +1,38 @@
-# React + Vite
+# DentaFlow — React + Express Starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Requirements
+- Node.js 20.19+ or 22.12+
+- npm
 
-Currently, two official plugins are available:
+## Run locally
+From the project root:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run install:all
+npm run dev
+```
 
-## React Compiler
+Open http://localhost:5173 for the React app. Express runs at http://localhost:5000.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Verify the API: http://localhost:5000/api/health
 
-## Expanding the Oxlint configuration
+## Structure
+- `client/src/components/Navbar.jsx`: reusable navigation bar
+- `client/src/components/Footer.jsx`: reusable footer
+- `client/src/pages/Home.jsx`: homepage
+- `client/src/pages/Placeholder.jsx`: temporary route pages
+- `client/src/App.jsx`: shared layout and React Router routes
+- `client/src/styles.css`: responsive styling
+- `server/index.js`: Express backend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Add your existing HTML/CSS pages
+1. Create a new `.jsx` file under `client/src/pages/`.
+2. Convert `class` to `className`, `for` to `htmlFor`, close self-closing elements, and wrap adjacent JSX elements.
+3. Import the page into `App.jsx` and replace its placeholder route.
+4. Keep `<Navbar/>` and `<Footer/>` only in `App.jsx`, not inside each page.
+5. Move any page-specific CSS into a separate CSS file and import it from the page.
+
+The homepage uses a remotely hosted stock dental image, so internet access is needed to load it. Replace the image URL with a locally stored asset for offline use. The provided screenshot is included only as a visual reference in `client/src/assets/reference.png`; it is not used as a page background.
+
+The API includes only health and empty services endpoints; booking and authentication are not implemented. The Book now button navigates to the login placeholder.
