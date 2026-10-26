@@ -10,6 +10,9 @@ export default function Login() {
     password: "",
   });
 
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -19,13 +22,53 @@ export default function Login() {
     }));
   }
 
-  function handleLogin(event) {
-    event.preventDefault();
 
-    // Temporary navigation while authentication is not implemented.
-    // Replace this with your Express login API later.
-    navigate("/admin");
+async function handleLogin(event) {
+  event.preventDefault();
+
+  setError("");
+  setLoading(true);
+
+  try {
+    const response = await fetch(
+      "http://localhost:3000/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(form),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.message || "Invalid email or password.");
+      return;
+    }
+
+    
+const user = data.user;
+
+console.log("Login response:", data);
+console.log("User role:", data.user?.role);
+
+if (user?.role === "admin") {
+  navigate("/admin");
+} else if (user?.role === "patient") {
+  navigate("/patient");
+} else {
+  setError("Your account role is not recognized.");
+}
+  } catch (error) {
+    setError("Unable to connect to the server. Please try again.");
+  } finally {
+    setLoading(false);
   }
+}
+
 
   return (
     <div className="login-page">
@@ -55,6 +98,7 @@ export default function Login() {
           <h2>Login</h2>
 
           <form onSubmit={handleLogin}>
+            {error && <p className="login-error">{error}</p>}
             <div className="login-field">
               <label htmlFor="email">Email</label>
 
@@ -87,9 +131,15 @@ export default function Login() {
               </Link>
             </div>
 
-            <button type="submit" className="login-submit">
-              Login
-            </button>
+            
+            <button
+              type="submit"
+              className="login-submit"
+               disabled={loading}
+        >
+                {loading ? "Logging in..." : "Login"}
+</button>
+
           </form>
 
           <p className="login-register">
