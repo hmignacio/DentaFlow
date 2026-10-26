@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const pool = require("./db");
 const session = require("express-session");
@@ -5,7 +6,13 @@ const MySQLStore = require("express-mysql-session")(session);
 const { requireAuth, requireRole } = require("./middleware/auth");
 require("dotenv").config();
 
+const cors = require("cors");
 const app = express();
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 const PORT = process.env.PORT || 3000;
 const sessionStore = new MySQLStore({
     host: process.env.DB_HOST,
