@@ -2,6 +2,8 @@ import { Routes, Route, Outlet } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
 import Home from "./pages/Home.jsx";
 import Registration from "./pages/Registration.jsx";
 import HelpCenter from "./pages/HelpCenter.jsx";
@@ -41,9 +43,15 @@ export default function App() {
         <Route path="/register" element={<Registration />} />
       </Route>
 
-      {/* ADMIN PAGES */}
-      <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/patient" element={<PatientDashboard />} />
+      {/* ADMIN DASHBOARD */}
+      <Route element={<ProtectedRoute allowedRole="admin" />}>
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Route>
+
+      {/* PATIENT DASHBOARD */}
+      <Route element={<ProtectedRoute allowedRole="patient" />}>
+        <Route path="/patient" element={<PatientDashboard />} />
+      </Route>
 
       {/* PAGE NOT FOUND */}
       <Route

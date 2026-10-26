@@ -36,7 +36,7 @@ export default function Registration() {
       return 'Email address is required.'
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
       return 'Please enter a valid email address.'
     }
@@ -44,8 +44,8 @@ export default function Registration() {
     if (!formData.password) {
       return 'Password is required.'
     }
-    if (formData.password.length < 8) {
-      return 'Password must be at least 8 characters long.'
+    if (formData.password.length < 8 || formData.password.length > 50) {
+      return 'Password must be between 8 and 50 characters long.'
     }
     if (formData.password !== formData.confirmPassword) {
       return 'Passwords do not match.'
@@ -58,47 +58,56 @@ export default function Registration() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+  e.preventDefault()
 
-    const validationError = validateForm()
-    if (validationError) {
-      setErrorMessage(validationError)
-      return
-    }
+  const validationError = validateForm()
 
-    setIsLoading(true)
-    setErrorMessage('')
-
-    const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`
-    const payload = {
-      full_name: fullName,
-      email: formData.email.trim().toLowerCase(),
-      password: formData.password,
-    }
-
-    try {
-      const response = await fetch('/api/auth/register-patient', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setIsSuccess(true)
-      } else {
-        setErrorMessage(data.message || 'Registration failed. Please try again.')
-      }
-    } catch {
-      // If the backend server is not running locally, allow testing the UI
-      setIsSuccess(true)
-    } finally {
-      setIsLoading(false)
-    }
+  if (validationError) {
+    setErrorMessage(validationError)
+    return
   }
+
+  setIsLoading(true)
+  setErrorMessage('')
+
+  const fullName =
+    `${formData.firstName.trim()} ${formData.lastName.trim()}`
+
+  const payload = {
+    full_name: fullName,
+    email: formData.email.trim().toLowerCase(),
+    password: formData.password,
+  }
+
+  try {
+    const response = await fetch('/api/auth/register-patient', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(
+        data.message || 'Registration failed. Please try again.'
+      )
+    }
+
+    // Show success only after backend confirms registration
+    setIsSuccess(true)
+
+  } catch (error) {
+    setErrorMessage(
+      error.message || 'Unable to connect to the server. Please try again.'
+    )
+  } finally {
+    setIsLoading(false)
+  }
+}
 
   return (
     <div className="registration-page-wrapper">

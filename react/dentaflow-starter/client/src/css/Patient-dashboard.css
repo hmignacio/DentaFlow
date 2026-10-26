@@ -10,6 +10,10 @@
   --white: #ffffff;
 }
 
+/* ==============================
+   GLOBAL STYLES
+================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,7 +27,9 @@ body {
   min-height: 100vh;
 }
 
-/* side-nav class*/
+/* ==============================
+   DASHBOARD SIDEBAR
+================================= */
 
 .side-nav {
   position: fixed;
@@ -31,14 +37,17 @@ body {
   left: 0;
   width: 185px;
   height: 100vh;
+  height: 100dvh;
   background-color: var(--light-blue);
   border-right: 1px solid var(--border-color);
   padding: 20px 10px;
+  z-index: 100;
+  overflow-y: auto;
 }
 
 .side-nav ul {
   list-style: none;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -46,41 +55,38 @@ body {
 }
 
 .side-nav li {
-  margin: 8px 10px;
+  margin: 5px 8px;
 }
 
-.side-nav li:first-child {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--dark-text);
-  padding: 20px 10px;
-  margin-bottom: 15px;
-}
-
-/* side-nav class and user-profile */
+/* ==============================
+   USER PROFILE
+================================= */
 
 .side-nav .user-profile {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 15px 8px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .user-profile > i {
-  font-size: 38px;
+  font-size: 35px;
   color: var(--dark-text);
+  flex-shrink: 0;
 }
 
-.user-profile div {
+.user-profile .user-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .user-profile span {
   font-size: 12px;
   font-weight: 600;
   color: var(--dark-text);
+  overflow-wrap: anywhere;
 }
 
 .user-profile small {
@@ -88,16 +94,29 @@ body {
   color: var(--gray-text);
 }
 
-/* side-nav class and list items */
+/* ==============================
+   SIDEBAR NAVIGATION
+================================= */
 
 .side-nav a {
-  display: block;
-  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 13px;
   color: var(--gray-text);
   text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 9px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.side-nav a i {
   font-size: 14px;
-  border-radius: 10px;
-  transition: 0.2s ease;
+  width: 17px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .side-nav a:hover {
@@ -105,72 +124,104 @@ body {
   color: var(--white);
 }
 
-.side-nav li:nth-child(2) a {
+/* Highlight active navigation item */
+
+.side-nav a.active {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ==============================
+   SIDEBAR BOTTOM NAVIGATION
+================================= */
+
+.side-nav .help-link {
+  margin-top: auto;
+}
+
+.side-nav .sign-out {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+/* ==============================
+   SIGN OUT BUTTON
+================================= */
+
+.side-nav .sign-out button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  width: 100%;
+  padding: 12px 13px;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 9px;
+
+  color: var(--gray-text);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.side-nav .sign-out button i {
+  font-size: 14px;
+  width: 17px;
+  text-align: center;
+}
+
+.side-nav .sign-out button:hover {
   background-color: var(--primary-blue);
   color: var(--white);
 }
 
-.side-nav li:nth-last-child(2) {
-  margin-top: calc(100vh - 430px);
+.side-nav .sign-out button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-/* side-nav class and button */
-
-.side-nav button {
-  width: 100%;
-  padding: 9px 15px;
-  border: 1px solid #909090;
-  border-radius: 9px;
-  background-color: #d9dde1;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--dark-text);
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-/* sign-out button  */
-
-.sign-out button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 9px 12px;
-}
-.sign-out button:hover {
-  background-color: #c9cdd1;
-}
-
-.side-nav button:hover {
-  background-color: #c9cdd1;
-}
-
-/* main-container class */
+/* ==============================
+   MAIN DASHBOARD CONTAINER
+================================= */
 
 .main-container {
   margin-left: 185px;
   min-height: 100vh;
-  padding: 80px 25px 0;
+  min-height: 100dvh;
+
+  padding: 50px 25px 0;
+
   display: flex;
   flex-direction: column;
+
+  background-color: var(--white);
 }
 
-/* welcome-pane class */
+/* ==============================
+   WELCOME SECTION
+================================= */
 
 .welcome-pane {
   display: flex;
   align-items: center;
+  gap: 25px;
   width: 100%;
-  margin-bottom: 28px;
+  margin-bottom: 35px;
 }
 
 .welcome-pane img {
-  width: 140px;
+  width: 110px;
   height: auto;
   object-fit: contain;
-  margin-right: 30px;
+  flex-shrink: 0;
 }
 
 .welcome-pane h2 {
@@ -180,19 +231,27 @@ body {
   color: var(--dark-text);
 }
 
-/* main-container -> add-appointment button */
+/* ==============================
+   ADD APPOINTMENT BUTTON
+================================= */
+
 #add-appointment {
   margin-left: auto;
   padding: 10px 20px;
+
   background-color: var(--white);
   border: 2px solid var(--dark-text);
   border-radius: 25px;
+
   color: var(--dark-text);
   font-family: "Poppins", sans-serif;
   font-size: 13px;
   font-weight: 600;
+
   cursor: pointer;
-  transition: 0.2s ease;
+  white-space: nowrap;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #add-appointment:hover {
@@ -200,14 +259,21 @@ body {
   color: var(--white);
 }
 
-/* appointment-pagination class */
+/* ==============================
+   APPOINTMENT TABLE CONTAINER
+================================= */
 
 .appointment-pagination {
   width: 100%;
   overflow-x: auto;
+
   background-color: var(--light-blue);
   border-radius: 15px;
 }
+
+/* ==============================
+   APPOINTMENT TABLE
+================================= */
 
 .appointment-pagination table {
   width: 100%;
@@ -230,92 +296,150 @@ body {
 }
 
 .appointment-pagination tr:last-child td {
-  /* status button */
   border-bottom: none;
 }
 
-.appointment-pagination td:nth-child(7) {
-  /* value of status */
+/* Patient appointment status - 6th column */
+
+.appointment-pagination td:nth-child(6) {
   color: var(--primary-blue);
   font-weight: 500;
 }
 
+/* ==============================
+   PATIENT ACTION BUTTONS
+================================= */
+
 .appointment-pagination td:last-child {
-  /* edit and delete buttons */
   white-space: nowrap;
 }
 
-.appointment-pagination td:last-child a {
+.patient-action-link {
   display: inline-block;
+  padding: 6px 10px;
   margin-right: 8px;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+
   color: var(--gray-text);
-  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
   font-weight: 500;
+
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.appointment-pagination td:last-child a:hover {
+.patient-action-link:hover {
+  background-color: var(--white);
   color: var(--primary-blue);
 }
 
-/* footer */
-.dentaflow-footer {
-  background: var(--white);
-  color: #94a3b8;
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
-  width: 100%;
-  padding: 30px 0;
+.patient-action-link:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* ==============================
+   DASHBOARD FOOTER
+================================= */
+
+.main-container > .dentaflow-footer {
   margin-top: auto;
+  flex-shrink: 0;
+}
+
+.dentaflow-footer {
+  width: 100%;
+  background-color: var(--white);
+  color: var(--gray-text);
+
+  font-family: "Poppins", sans-serif;
+
+  padding: 30px 0 20px;
 }
 
 .footer-container {
-  width: min(1100px, calc(100% - 80px));
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .footer-bottom {
-  border-top: 1px solid #263244;
-  padding-top: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 
-  gap: 25px;
+  gap: 20px;
+
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
 }
 
 .footer-bottom p {
   margin: 0;
-  color: #64748b;
-  font-size: 13px;
+  color: var(--gray-text);
+  font-size: 12px;
 }
 
 .footer-legal {
   display: flex;
   align-items: center;
-  gap: 28px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .footer-legal a {
-  color: #64748b;
-  font-size: 13px;
+  color: var(--gray-text);
+  font-size: 12px;
   text-decoration: none;
+
   transition: color 0.2s ease;
 }
 
 .footer-legal a:hover {
-  color: #299dcc;
+  color: var(--primary-blue);
 }
 
-/* responsiveness */
+/* ==============================
+   RESPONSIVE - TABLET
+================================= */
 
 @media (max-width: 900px) {
   .side-nav {
-    width: 150px;
+    width: 160px;
+    padding: 15px 8px;
+  }
+
+  .side-nav li {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .side-nav a {
+    font-size: 12px;
+    padding: 11px 10px;
+  }
+
+  .side-nav .sign-out button {
+    font-size: 12px;
+    padding: 11px 10px;
   }
 
   .main-container {
-    margin-left: 150px;
-    padding: 70px 20px 25px;
+    margin-left: 160px;
+    padding: 40px 20px 0;
+  }
+
+  .welcome-pane {
+    gap: 15px;
+  }
+
+  .welcome-pane img {
+    width: 90px;
   }
 
   .welcome-pane h2 {
@@ -325,32 +449,163 @@ body {
   .appointment-pagination table {
     min-width: 900px;
   }
+
+  .footer-bottom {
+    gap: 15px;
+  }
+
+  .footer-legal {
+    gap: 15px;
+  }
 }
 
+/* ==============================
+   RESPONSIVE - MOBILE
+================================= */
+
 @media (max-width: 600px) {
+  /* Sidebar becomes top navigation */
+
   .side-nav {
-    position: static;
+    position: relative;
     width: 100%;
     height: auto;
-    padding: 10px;
+    min-height: auto;
+
+    padding: 12px 15px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .side-nav li:nth-last-child(2) {
-    margin-top: 8px;
+  .side-nav ul {
+    min-height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
   }
+
+  .side-nav li {
+    margin: 0;
+  }
+
+  .side-nav .user-profile {
+    width: 100%;
+    padding: 8px 5px;
+    margin-bottom: 10px;
+  }
+
+  .user-profile > i {
+    font-size: 30px;
+  }
+
+  .side-nav a {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .side-nav .help-link {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .side-nav .sign-out {
+    margin: 0;
+  }
+
+  .side-nav .sign-out button {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  /* Main content */
 
   .main-container {
     margin-left: 0;
-    padding: 25px 15px;
+    min-height: calc(100dvh - 150px);
+    padding: 25px 15px 0;
   }
 
+  /* Welcome section */
+
   .welcome-pane {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .welcome-pane img {
+    width: 75px;
+  }
+
+  .welcome-pane h2 {
+    font-size: 20px;
+  }
+
+  #add-appointment {
+    margin-left: 0;
+    padding: 9px 15px;
+    font-size: 12px;
+  }
+
+  /* Appointment table */
+
+  .appointment-pagination table {
+    min-width: 900px;
+  }
+
+  /* Footer */
+
+  .dentaflow-footer {
+    padding: 30px 0 20px;
+  }
+
+  .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
 
-  .appointment-pagination table {
-    min-width: 900px;
+  .footer-legal {
+    gap: 15px;
+  }
+
+  .footer-bottom p,
+  .footer-legal a {
+    font-size: 11px;
+  }
+}
+
+/* ==============================
+   RESPONSIVE - SMALL MOBILE
+================================= */
+
+@media (max-width: 400px) {
+  .side-nav {
+    padding: 10px;
+  }
+
+  .side-nav a {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .side-nav .sign-out button {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .welcome-pane h2 {
+    font-size: 18px;
+  }
+
+  #add-appointment {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .footer-legal {
+    gap: 10px;
   }
 }

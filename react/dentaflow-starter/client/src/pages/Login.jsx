@@ -30,17 +30,17 @@ async function handleLogin(event) {
   setLoading(true);
 
   try {
-    const response = await fetch(
-      "http://localhost:3000/api/auth/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(form),
-      }
-    );
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+      }),
+    });
 
     const data = await response.json();
 
@@ -49,19 +49,16 @@ async function handleLogin(event) {
       return;
     }
 
-    
-const user = data.user;
+    const user = data.user;
 
-console.log("Login response:", data);
-console.log("User role:", data.user?.role);
+    if (user?.role === "admin") {
+      navigate("/admin", { replace: true });
+    } else if (user?.role === "patient") {
+      navigate("/patient", { replace: true });
+    } else {
+      setError("Your account role is not recognized.");
+    }
 
-if (user?.role === "admin") {
-  navigate("/admin");
-} else if (user?.role === "patient") {
-  navigate("/patient");
-} else {
-  setError("Your account role is not recognized.");
-}
   } catch (error) {
     setError("Unable to connect to the server. Please try again.");
   } finally {

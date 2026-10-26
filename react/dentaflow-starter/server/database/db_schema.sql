@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS `dentaflow`
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_0900_ai_ci;
 USE `dentaflow`;
+
 CREATE TABLE IF NOT EXISTS `users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `full_name` VARCHAR(100) NOT NULL,
@@ -17,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   AUTO_INCREMENT=3
   DEFAULT CHARSET=utf8mb4
   COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE IF NOT EXISTS `sessions` (
   `session_id` VARCHAR(128) NOT NULL,
   `expires` INT UNSIGNED NOT NULL,

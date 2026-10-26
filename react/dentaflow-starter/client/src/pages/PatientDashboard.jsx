@@ -1,44 +1,10 @@
-
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import PatientSideBar from "../components/DashboardSidebar";
 import AdminFooter from "../components/AdminFooter";
 import logo from "../assets/dentaflow_logo.png";
 
 import "../css/Patient-dashboard.css";
 import "../css/Dashboard-modal.css";
-
-const initialAppointments = [
-  {
-    reference: "123456678",
-    date: "2026-09-10",
-    time: "11:00 A.M.",
-    service: "extraction",
-    dentist: "hanna",
-    status: "Booked",
-  },
-  {
-    reference: "123456679",
-    date: "2026-09-12",
-    time: "11:00 A.M.",
-    service: "root",
-    dentist: "tovy",
-    status: "Booked",
-  },
-];
-
-const services = {
-  extraction: "Tooth Extraction",
-  root: "Root Canal",
-  cleaning: "Cleaning",
-  restoration: "Tooth Restoration",
-};
-
-const dentists = {
-  hanna: "Dra. Hanna Ignacio",
-  tovy: "Dr. Tovy Allistair",
-  kurt: "Dr. Kurt Gozon",
-  xyril: "Dra. Xyril Fabellon",
-};
 
 const emptyForm = {
   date: "",
@@ -47,165 +13,368 @@ const emptyForm = {
 };
 
 function formatDate(date) {
-  if (!date) return "";
-  const [year, month, day] = date.split("-");
+  if (!date) return "—";
+
+  // Handles MySQL dates returned as either YYYY-MM-DD or ISO strings.
+  const datePart = String(date).slice(0, 10);
+  const [year, month, day] = datePart.split("-");
+
   return `${month}/${day}/${year}`;
 }
 
+function formatTime(time) {
+  if (!time) return "To be assigned";
+
+  const [hours, minutes] = String(time).split(":");
+  const hour = Number(hours);
+
+  if (Number.isNaN(hour)) return time;
+
+  const period = hour >= 12 ? "P.M." : "A.M.";
+  const formattedHour = hour % 12 || 12;
+
+  return `${formattedHour}:${minutes} ${period}`;
+}
+
+function getTodayManila() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Manila",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+
+  const values = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value])
+  );
+
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
 export default function PatientDashboard() {
-  const [appointments, setAppointments] = useState(initialAppointments);
+  const [username, setUsername] = useState("");
+
+  const [appointments, setAppointments] = useState([]);
+  const [services, setServices] = useState([]);
+  const [dentists, setDentists] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   const [modalOpen, setModalOpen] = useState(false);
-  const [editingReference, setEditingReference] = useState(null);
-  const [deleteReference, setDeleteReference] = useState(null);
+  const [cancelId, setCancelId] = useState(null);
+
   const [form, setForm] = useState(emptyForm);
+  const [saving, setSaving] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
+
+
+
+  const fetchAppointments = useCallback(async () => {
+    const response = await fetch("/api/appointments", {
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Unable to retrieve appointments.");
+    }
+
+    const data = await response.json();
+
+    setAppointments(data.appointments || []);
+  }, []);
+
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadDashboard() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const [userResponse, appointmentsResponse, servicesResponse, dentistsResponse] =
+          await Promise.all([
+            fetch("/api/auth/me", {
+              credentials: "include",
+            }),
+
+            fetch("/api/appointments", {
+              credentials: "include",
+            }),
+
+            fetch("/api/appointments/services", {
+              credentials: "include",
+            }),
+
+            fetch("/api/appointments/dentists", {
+              credentials: "include",
+            }),
+          ]);
+
+        if (
+          !userResponse.ok ||
+          !appointmentsResponse.ok ||
+          !servicesResponse.ok ||
+          !dentistsResponse.ok
+        ) {
+          throw new Error("Unable to load dashboard information.");
+        }
+
+        const [userData, appointmentData, serviceData, dentistData] =
+          await Promise.all([
+            userResponse.json(),
+            appointmentsResponse.json(),
+            servicesResponse.json(),
+            dentistsResponse.json(),
+          ]);
+
+        if (!active) return;
+
+        setUsername(userData.user.full_name);
+        setAppointments(appointmentData.appointments || []);
+        setServices(serviceData.services || []);
+        setDentists(dentistData.dentists || []);
+      } catch (err) {
+        console.error("Dashboard loading error:", err);
+
+        if (active) {
+          setError(err.message);
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadDashboard();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  
 
   function openAddModal() {
-    setEditingReference(null);
-    setForm(emptyForm);
-    setModalOpen(true);
-  }
-
-  function openEditModal(appointment) {
-    setEditingReference(appointment.reference);
-    setForm({
-      date: appointment.date,
-      service: appointment.service,
-      dentist: appointment.dentist,
-    });
+    setForm({ ...emptyForm });
+    setError("");
     setModalOpen(true);
   }
 
   function updateForm(event) {
     const { name, value } = event.target;
+
     setForm((previous) => ({
       ...previous,
       [name]: value,
     }));
   }
 
-  function saveAppointment(event) {
+  
+
+  async function saveAppointment(event) {
     event.preventDefault();
 
-    if (editingReference !== null) {
-      setAppointments((previous) =>
-        previous.map((appointment) =>
-          appointment.reference === editingReference
-            ? {
-                ...appointment,
-                ...form,
-              }
-            : appointment
-        )
-      );
-    } else {
-      const newAppointment = {
-        reference: String(Date.now()),
-        ...form,
-        time: "To be assigned",
-        status: "Booked",
-      };
+    if (saving) return;
 
-      setAppointments((previous) => [...previous, newAppointment]);
+    try {
+      setSaving(true);
+      setError("");
+
+      const response = await fetch("/api/appointments", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          appointment_date: form.date,
+          service_id: Number(form.service),
+          dentist_id: Number(form.dentist),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Unable to book appointment.");
+      }
+
+      await fetchAppointments();
+
+      setModalOpen(false);
+      setForm({ ...emptyForm });
+
+      alert("Appointment request submitted successfully.");
+    } catch (err) {
+      console.error("Appointment booking error:", err);
+      setError(err.message);
+    } finally {
+      setSaving(false);
     }
-
-    setModalOpen(false);
-    setEditingReference(null);
-    setForm(emptyForm);
   }
 
-  function deleteAppointment() {
-    setAppointments((previous) =>
-      previous.filter(
-        (appointment) => appointment.reference !== deleteReference
-      )
-    );
 
-    setDeleteReference(null);
+  async function cancelAppointment(event) {
+    event.preventDefault();
+
+    if (cancelling || cancelId === null) return;
+
+    try {
+      setCancelling(true);
+      setError("");
+
+      const response = await fetch(
+        `/api/appointments/${cancelId}/cancel`,
+        {
+          method: "PATCH",
+          credentials: "include",
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Unable to cancel appointment.");
+      }
+
+      await fetchAppointments();
+
+      setCancelId(null);
+
+      alert("Appointment cancelled successfully.");
+    } catch (err) {
+      console.error("Appointment cancellation error:", err);
+      setError(err.message);
+    } finally {
+      setCancelling(false);
+    }
   }
+
 
   return (
     <>
-      <PatientSideBar />
+      <div className="dashboard-layout">
+        <PatientSideBar role="patient" />
 
-      <div className="main-container">
-        <div className="welcome-pane">
-          <img src={logo} alt="DentaFlow Logo" />
+        <div className="dashboard-content">
+          <div className="main-container">
 
-          <h2>Hello Username!</h2>
+            {/* Welcome Section */}
 
-          <button
-            id="add-appointment"
-            type="button"
-            onClick={openAddModal}
-          >
-            + Add Appointment
-          </button>
+            <div className="welcome-pane">
+              <img src={logo} alt="DentaFlow Logo" />
+
+              <h2>Hello {username || "there"}!</h2>
+
+              <button
+                id="add-appointment"
+                type="button"
+                onClick={openAddModal}
+              >
+                + Add Appointment
+              </button>
+            </div>
+
+            {/* Error Message */}
+
+            {error && (
+              <p role="alert" style={{ color: "#c0392b", padding: "10px" }}>
+                {error}
+              </p>
+            )}
+
+            {/* Appointment Table */}
+
+            <div className="appointment-pagination">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Reference No.</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Service</th>
+                    <th>Dentist</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {loading ? (
+                    <tr>
+                      <td colSpan="7" style={{ textAlign: "center" }}>
+                        Loading appointments...
+                      </td>
+                    </tr>
+                  ) : appointments.length === 0 ? (
+                    <tr>
+                      <td colSpan="7" style={{ textAlign: "center" }}>
+                        No appointments found.
+                      </td>
+                    </tr>
+                  ) : (
+                    appointments.map((appointment) => (
+                      <tr key={appointment.id}>
+                        <td>{appointment.id}</td>
+
+                        <td>
+                          {formatDate(appointment.appointment_date)}
+                        </td>
+
+                        <td>
+                          {formatTime(appointment.appointment_time)}
+                        </td>
+
+                        <td>{appointment.service_name}</td>
+
+                        <td>{appointment.dentist_name}</td>
+
+                        <td>{appointment.status}</td>
+
+                        <td>
+                          {["Pending", "Booked"].includes(
+                            appointment.status
+                          ) ? (
+                            <button
+                              type="button"
+                              className="patient-action-link"
+                              onClick={() => {
+                                setError("");
+                                setCancelId(appointment.id);
+                              }}
+                            >
+                              Cancel
+                            </button>
+                          ) : (
+                            <span>—</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <AdminFooter />
         </div>
-
-        <div className="appointment-pagination">
-          <table>
-            <thead>
-              <tr>
-                <th>Reference No.</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Service</th>
-                <th>Dentist</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {appointments.map((appointment) => (
-                <tr key={appointment.reference}>
-                  <td>{appointment.reference}</td>
-                  <td>{formatDate(appointment.date)}</td>
-                  <td>{appointment.time}</td>
-                  <td>{services[appointment.service]}</td>
-                  <td>{dentists[appointment.dentist]}</td>
-                  <td>{appointment.status}</td>
-
-                  <td>
-                    <button
-                      type="button"
-                      className="patient-action-link"
-                      onClick={() => openEditModal(appointment)}
-                    >
-                      Edit
-                    </button>
-
-                    <button
-                      type="button"
-                      className="patient-action-link"
-                      onClick={() =>
-                        setDeleteReference(appointment.reference)
-                      }
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <AdminFooter />
       </div>
 
-      {/* Add / Edit Appointment Modal */}
+
 
       {modalOpen && (
         <div className="appointment-modal">
           <div className="main-container-add-appointment">
+
             <h2>Book an Appointment</h2>
 
             <form onSubmit={saveAppointment}>
               <p>
-                <i>
-                  Please confirm your appointment information.
-                </i>
+                <i>Please confirm your appointment information.</i>
               </p>
 
               <label htmlFor="patient-appointment-date">
@@ -216,6 +385,7 @@ export default function PatientDashboard() {
                 type="date"
                 id="patient-appointment-date"
                 name="date"
+                min={getTodayManila()}
                 value={form.date}
                 onChange={updateForm}
                 required
@@ -237,10 +407,12 @@ export default function PatientDashboard() {
                   required
                 >
                   <option value="">Select...</option>
-                  <option value="extraction">Tooth Extraction</option>
-                  <option value="root">Root Canal</option>
-                  <option value="cleaning">Cleaning</option>
-                  <option value="restoration">Tooth Restoration</option>
+
+                  {services.map((service) => (
+                    <option key={service.id} value={service.id}>
+                      {service.service_name}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -257,20 +429,27 @@ export default function PatientDashboard() {
                   required
                 >
                   <option value="">Select...</option>
-                  <option value="hanna">Dra. Hanna Ignacio</option>
-                  <option value="tovy">Dr. Tovy Allistair</option>
-                  <option value="kurt">Dr. Kurt Gozon</option>
-                  <option value="xyril">Dra. Xyril Fabellon</option>
+
+                  {dentists.map((dentist) => (
+                    <option key={dentist.id} value={dentist.id}>
+                      {dentist.full_name}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="form-buttons">
-                <input type="submit" value="Book Appointment" />
+                <input
+                  type="submit"
+                  value={saving ? "Booking..." : "Book Appointment"}
+                  disabled={saving}
+                />
 
                 <input
                   type="button"
                   value="Cancel"
                   onClick={() => setModalOpen(false)}
+                  disabled={saving}
                 />
               </div>
             </form>
@@ -278,34 +457,32 @@ export default function PatientDashboard() {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
 
-      {deleteReference !== null && (
+      {cancelId !== null && (
         <div className="appointment-modal">
           <div className="main-container-add-appointment">
-            <h2>Delete Appointment?</h2>
 
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                deleteAppointment();
-              }}
-            >
+            <h2>Cancel Appointment?</h2>
+
+            <form onSubmit={cancelAppointment}>
               <p>
-                Are you sure you want to delete this appointment?
-                This action will remove it from your appointment list.
+                Are you sure you want to cancel this appointment?
+                The appointment will remain in your records with
+                a Cancelled status.
               </p>
 
               <div className="form-buttons">
                 <input
                   type="button"
                   value="Keep Appointment"
-                  onClick={() => setDeleteReference(null)}
+                  onClick={() => setCancelId(null)}
+                  disabled={cancelling}
                 />
 
                 <input
                   type="submit"
-                  value="Yes, Delete"
+                  value={cancelling ? "Cancelling..." : "Yes, Cancel"}
+                  disabled={cancelling}
                 />
               </div>
             </form>

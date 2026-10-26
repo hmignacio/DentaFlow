@@ -1,7 +1,7 @@
 {
   "name": "dentaflow-server",
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "node --watch index.js",
     "start": "node index.js"
@@ -10,6 +10,10 @@
     "cors": "^2.8.5",
     "dentaflow": "file:..",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "bcrypt": "^6.0.0",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.19.0",
+    "mysql2": "^3.24.6"
   }
 }
