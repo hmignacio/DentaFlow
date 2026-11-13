@@ -149,3 +149,66 @@
     gap: 15px;
   }
 }
+
+
+/* Mobile Navbar Improvements */
+@media (max-width: 600px) {
+  .dentaflow-navbar {
+    width: 100%;
+    min-height: 68px;
+    padding: 10px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .dentaflow-navbar .navbar-brand {
+    margin-left: 0;
+    font-size: 20px;
+    gap: 8px;
+  }
+
+  .dentaflow-navbar .navbar-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .dentaflow-navbar .navbar-navigation {
+    width: 100%;
+    height: auto;
+    padding: 0 12px;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .dentaflow-navbar .navbar-links {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  .dentaflow-navbar .navbar-links > a:not(.navbar-profile) {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .dentaflow-navbar .navbar-profile {
+    width: 34px;
+    height: 34px;
+    margin-left: 0;
+  }
+
+  .dentaflow-navbar .navbar-profile::before {
+    left: 9px;
+  }
+
+  .dentaflow-navbar .navbar-profile::after {
+    left: 5px;
+  }
+}
+

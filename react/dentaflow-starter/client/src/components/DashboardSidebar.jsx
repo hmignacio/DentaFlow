@@ -99,21 +99,6 @@ export default function DashboardSidebar({ role = "patient" }) {
           </NavLink>
         </li>
 
-        {/* Services */}
-        <li>
-          <NavLink to={servicesPath}>
-            <i className="fa-solid fa-tooth"></i>
-            Services
-          </NavLink>
-        </li>
-
-        {/* Help Center */}
-        <li className="help-link">
-          <Link to="/help">
-            <i className="fa-solid fa-circle-question"></i>
-            Need Help?
-          </Link>
-        </li>
 
         {/* Sign Out */}
         <li className="sign-out">

@@ -623,3 +623,121 @@ body {
     gap: 10px;
   }
 }
+
+
+/* Mobile Dashboard Sidebar */
+@media (max-width: 600px) {
+  .side-nav {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .side-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .side-nav li {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .side-nav .user-profile {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
+
+  .side-nav a,
+  .side-nav .sign-out button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 8px;
+    font-size: 12px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .side-nav .help-link,
+  .side-nav .sign-out {
+    margin: 0;
+  }
+
+  .main-container {
+    margin-left: 0;
+  }
+}
+
+
+/* Sidebar Layout - Desktop and Mobile */
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-nav ul {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.side-nav .user-profile {
+  margin-bottom: 15px;
+}
+
+/* Keep Sign Out at the bottom */
+.side-nav .sign-out {
+  margin-top: auto;
+}
+
+/* Desktop */
+@media (min-width: 601px) {
+  .side-nav {
+    height: 100vh;
+  }
+
+  .side-nav ul {
+    height: 100%;
+  }
+
+  .side-nav .sign-out {
+    margin-top: auto;
+    margin-bottom: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .side-nav {
+    height: auto;
+    min-height: 220px;
+  }
+
+  .side-nav ul {
+    min-height: 190px;
+  }
+
+  .side-nav .sign-out {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+}

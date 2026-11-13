@@ -113,3 +113,69 @@
   .footer-legal a:hover {
     color: #299dcc;
   }
+
+
+/* Tablet responsiveness */
+@media (max-width: 900px) {
+  .footer-container {
+    width: calc(100% - 40px);
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .dentaflow-footer {
+    padding: 35px 0 20px;
+  }
+
+  .footer-container {
+    width: calc(100% - 30px);
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    padding-bottom: 25px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .footer-content,
+  .footer-brand,
+  .footer-column {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .footer-brand p {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}

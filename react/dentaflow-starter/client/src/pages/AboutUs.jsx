@@ -9,7 +9,6 @@ export default function AboutUs() {
           src={logo}
           alt="DentaFlow"
           className="about-image"
-          style={{ width: "511px", height: "511px" }}
         />
       </div>
 
