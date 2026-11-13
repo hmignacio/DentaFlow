@@ -81,8 +81,7 @@ planning, design, development, and testing of DentaFlow:
 4.  [Manual Testing](https://docs.google.com/spreadsheets/d/19qkw-eBdFP2SmRkauLIIMWNErW4TqHH3YpwGmtI0ZwU/edit?usp=sharing)
 5.  [AI Use Statement](https://docs.google.com/document/d/1KvUr-C5jZYMKvW5vPVOcPH-bXyM8Pd-IVHGPEZASRtE/edit?usp=sharing)
 6.  [Application Development Workflow Worksheet](https://docs.google.com/spreadsheets/d/1OBJYoLtzAZjPOsfg9GOeEIU5mEEhV1UXyGEBaGGGSYQ/edit?usp=sharing)
-
-
+7.  [Functional Testing Workbook](https://docs.google.com/spreadsheets/d/1jz-91_5ZbL-2jPg19pTHVfmgNRlwli7As8YQD4UaOfM/edit?gid=966425510#gid=966425510)
 ## Note
 
 DentaFlow is a student project developed for learning and demonstration purposes. Use sample information when testing the application.
